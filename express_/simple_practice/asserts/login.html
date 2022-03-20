@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login page</title>
+</head>
+<body>
+<form action="http://localhost:7777/login">
+    账号 <input type="text" id="user-account">
+    <br>
+    密码 <input type="text" id="user-password">
+    <br>
+    验证码 <input type="text" id="user-verify"> &nbsp
+    <span id="verify-instance"></span>
+    <br>
+    <input type="submit" id="sub">
+</form>
+<script>
+    let verify = document.querySelector("#verify-instance");
+    let userInput = document.querySelector("#user-verify");
+    let submit = document.querySelector("#sub");
+    let form = document.queryCommandEnabled("form");
+    submit.addEventListener("click", () => {
+        console.log("用户输入" + userInput.value);
+        console.log("期待输入" + verify.innerHTML);
+        // 请求拦截忘记怎么写了，后面再来补
+        if (userInput.innerHTML == verify.innerHTML) {
+            console.log("验证成功");
+        } else {
+            console.log("验证失败");
+        }
+    });
+
+    function randomSign() {
+        let arr = "abcdjaiwjdialjknjjijpoijIOAJOIWABF123124";
+        return arr[Math.floor(Math.random() * arr.length)]
+            + arr[Math.floor(Math.random() * arr.length)]
+            + arr[Math.floor(Math.random() * arr.length)]
+            + arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    verify.style.color = "#087419";
+    verify.innerHTML = randomSign();
+</script>
+</body>
+</html>

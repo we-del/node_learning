@@ -13,7 +13,8 @@ class OpenHttp {
             console.log("msg" + msg);
             console.log("t ", (this.qs.parse(msg)));
             res.setHeader('content-type', 'text/html;charset=utf8');
-            res.end("<h1>我来返回数据</h1>>");
+           // res.end("<h1>我来返回数据</h1>>");
+            res.end(JSON.stringify("返回数据到客户端"));
         });
         this.server.listen(5000, () => console.log("端口监听中"));
     }
