@@ -4,6 +4,11 @@ app.listen(7777);
 
 app.use(express.static(__dirname+"/asserts"));
 
+app.use((req,res)=>{
+   console.log(typeof req);
+   console.log(typeof res);
+});
+
 app.get("/register",(req,res)=>{
     res.sendFile(__dirname+"/asserts/register.html");
 });
